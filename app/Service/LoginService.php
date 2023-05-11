@@ -9,13 +9,23 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginService
 {
+    /**
+     * @var $loginRepository
+     */
     private $loginRepository;
 
+    /**
+     * @param LoginRepository $loginRepository
+     */
     public function __construct(LoginRepository $loginRepository)
     {
         $this->loginRepository = $loginRepository;
     }
 
+    /**
+     * @param $request
+     * @return true or false
+     */
     public function loginService($request)
     {
         $email = $request->email;
