@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use App\Repository\LoginRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
