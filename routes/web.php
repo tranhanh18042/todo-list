@@ -20,4 +20,6 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware(['login'])->group(function () {
     Route::get('/todo-list',[ToDoListController::class, 'getListToDo'])->name('todo.list');
+    Route::delete('/todo-list/{id}',[ToDoListController::class, 'destroy']);
+    Route::post('/todo-list',[ToDoListController::class, 'store']);
 });

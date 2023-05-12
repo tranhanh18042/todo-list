@@ -19,7 +19,6 @@ class TasKFactory extends Factory
         return [
             'user_id'=> fake()->numberBetween(1,10),
             'name'=> fake()->name(),
-            'status'=> fake()->numberBetween(0,1),
         ];
     }
 }

@@ -20,7 +20,10 @@
 
                             <h4 class="text-center my-3 pb-3">To Do App</h4>
 
-                            <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                            <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2"
+                                method="POST">
+                                @csrf
+                                @method('POST')
                                 <div class="col-12">
                                     <div class="form-outline">
                                         <input name="name" type="text" id="form1" class="form-control" />
@@ -30,9 +33,6 @@
 
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-warning">Get tasks</button>
                                 </div>
                             </form>
 
@@ -45,27 +45,18 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($listTask as $task)
-                                        <tr>
-                                            <td>{{ $task->name }}</td>
-                                            @if ($task->status == 1)
-                                                <td>Success</td>
-                                            @endif
-                                            @if ($task->status == 0)
-                                                <td>In progress</td>
-                                            @endif
-
-                                            <td>
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                        <form action="{{ url('/todo-list' . '/' . $task->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <tr>
+                                                <td>{{ $task->name }}</td>
                                                 @if ($task->status == 1)
-                                                    <button style="display: none;" type="submit"
-                                                        class="btn btn-success ms-1">Finished</button>
+                                                    <td>Success</td>
                                                 @endif
-                                                @if ($task->status == 0)
-                                                    <button type="submit"
-                                                        class="btn btn-success ms-1">Finished</button>
-                                                @endif
-                                            </td>
-                                        </tr>
+                                                <td>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
                                     @endforeach
                                 </tbody>
                             </table>

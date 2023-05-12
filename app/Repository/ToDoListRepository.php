@@ -14,6 +14,17 @@ class ToDoListRepository
     }
     public function getAll($userId)
     {
-        return $this->task = Task::where('user_id',$userId)->get();
+        return $this->task = Task::where('user_id', $userId)->get();
+    }
+    public function delete($id)
+    {
+        $task = $this->task->find($id);
+        $task->delete();
+
+        return $task;
+    }
+    public function addWork($task)
+    {
+        return $this->task->insert($task);
     }
 }
