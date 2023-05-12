@@ -37,7 +37,7 @@ class LoginController extends Controller
     {
         $rs = $this->loginService->loginService($request);
         if ($rs == true) {
-            return view('welcome');
+            return redirect()->route('todo.list');
         } else {
             return redirect()->back();
         }
